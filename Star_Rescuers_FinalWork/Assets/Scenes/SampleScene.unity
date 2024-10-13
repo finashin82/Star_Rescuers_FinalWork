@@ -151,8 +151,7 @@ Transform:
   m_LocalPosition: {x: 1.27, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 239463177}
+  m_Children: []
   m_Father: {fileID: 1671777581}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &239463175
@@ -233,11 +232,11 @@ Transform:
   m_GameObject: {fileID: 239463175}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.23000002, y: 0.019999921, z: -0.04245063}
-  m_LocalScale: {x: 0.418992, y: 0.418992, z: 0.418992}
+  m_LocalPosition: {x: 1.6300001, y: 0.5735998, z: -0.04245063}
+  m_LocalScale: {x: 0.61602974, y: 0.61602974, z: 0.61602974}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 165204794}
+  m_Father: {fileID: 1671777581}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &297013924
 GameObject:
@@ -1663,7 +1662,6 @@ GameObject:
   - component: {fileID: 1671777582}
   - component: {fileID: 1671777585}
   - component: {fileID: 1671777586}
-  - component: {fileID: 1671777587}
   - component: {fileID: 1671777588}
   - component: {fileID: 1671777589}
   m_Layer: 0
@@ -1687,6 +1685,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 165204794}
+  - {fileID: 239463177}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1671777582
@@ -1847,19 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedPlayer: 10
---- !u!114 &1671777587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1671777580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8433c5d8d6f0cd4b98f39485bd36d22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpForce: 400
+  jumpForce: 500
 --- !u!114 &1671777588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1875,6 +1862,7 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3460168662607682316, guid: d980489d62ed1814ea799b44717c02d8, type: 3}
   _fireSpeed: 100
   _firePoint: {fileID: 165204794}
+  _fireFlash: {fileID: 239463175}
 --- !u!114 &1671777589
 MonoBehaviour:
   m_ObjectHideFlags: 0

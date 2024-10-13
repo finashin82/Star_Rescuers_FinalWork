@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 36f8696ce0f4f384aa1a5073a6d57153
+guid: 37de968ae1bca5a4eb41f79716d3d10b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -149,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cosmo-Idle_0
+      name: Cosmo-Run_0
       rect:
         serializedVersion: 2
-        x: 76
-        y: 80
-        width: 389
-        height: 317
+        x: 624
+        y: 94
+        width: 391
+        height: 322
       alignment: 9
       pivot: {x: 0.37, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 873826618a103aa4ea0248287a44fe64
-      internalID: 769516897
+      spriteID: c6ec67d843654304da0b1946da404e86
+      internalID: 2134161772
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cosmo-Idle_1
+      name: Cosmo-Run_1
       rect:
         serializedVersion: 2
-        x: 537
-        y: 82
-        width: 389
-        height: 316
+        x: 1065
+        y: 89
+        width: 391
+        height: 327
       alignment: 9
       pivot: {x: 0.37, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,71 +184,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad79897feda4cd74fb7cddc419378a68
-      internalID: -1941908586
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cosmo-Idle_2
-      rect:
-        serializedVersion: 2
-        x: 1074
-        y: 92
-        width: 387
-        height: 316
-      alignment: 9
-      pivot: {x: 0.37, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 09228d12fd97ebe4fa9ab60a170fa399
-      internalID: -1014703347
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cosmo-Idle_4
-      rect:
-        serializedVersion: 2
-        x: 1606
-        y: 92
-        width: 379
-        height: 315
-      alignment: 9
-      pivot: {x: 0.37, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ae2074f17ab182e4caa2abd68b3be68e
-      internalID: -1025088527
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cosmo-Idle_5
-      rect:
-        serializedVersion: 2
-        x: 2064
-        y: 79
-        width: 389
-        height: 318
-      alignment: 9
-      pivot: {x: 0.37, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a5727552c9a5baa44b802ef7b732d5e8
-      internalID: 880778081
+      spriteID: 8ab5d24576d6d07428f3a5035c87f8d5
+      internalID: -613783832
       vertices: []
       indices: 
       edges: []
@@ -264,12 +201,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cosmo-Idle_0: 769516897
-      Cosmo-Idle_1: -1941908586
-      Cosmo-Idle_2: -1014703347
-      Cosmo-Idle_3: 2017729765
-      Cosmo-Idle_4: -1025088527
-      Cosmo-Idle_5: 880778081
+      Cosmo-Run_0: 2134161772
+      Cosmo-Run_1: -613783832
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
