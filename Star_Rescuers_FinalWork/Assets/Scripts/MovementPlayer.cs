@@ -90,11 +90,17 @@ public class MovementPlayer : MonoBehaviour
         {
             animatorPlayer.SetBool("isJump", false);
         }
+
+        // Когда отпускаем пробел после прыжка, можно летать
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isFly = true;
+        }
     }
 
     private void Fly()
     {
-        if (Input.GetKey(KeyCode.Space) && !isGround)
+        if (Input.GetKey(KeyCode.Space) && isFly)
         {
             animatorPlayer.SetBool("isJump", true);
 
@@ -115,6 +121,7 @@ public class MovementPlayer : MonoBehaviour
         if (collision.CompareTag("Ground"))
         {
             isGround = true;
+            isFly = false;
         }
     }
 
