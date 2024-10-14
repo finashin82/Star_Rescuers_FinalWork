@@ -6754,7 +6754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speedPlayer: 10
   jumpForce: 400
-  flyForce: 1
+  flyForce: 2
 --- !u!114 &1671777588
 MonoBehaviour:
   m_ObjectHideFlags: 0
