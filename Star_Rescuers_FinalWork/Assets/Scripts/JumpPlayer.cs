@@ -8,9 +8,12 @@ public class JumpPlayer : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private Animator animatorPlayer;
+
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();   
+        rb = GetComponent<Rigidbody2D>();
+        animatorPlayer = GetComponent<Animator>();
     }
 
     void Update()
@@ -22,7 +25,13 @@ public class JumpPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            animatorPlayer.SetBool("isJump", true);
+
             rb.AddForce(Vector2.up * jumpForce);
         }
+        else
+        {
+            animatorPlayer.SetBool("isJump", false);
+        }        
     }
 }
