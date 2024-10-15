@@ -6,11 +6,13 @@ using UnityEngine.Events;
 
 public class MovementPlayer : MonoBehaviour
 {
-    [SerializeField] private float speedPlayer = 0.5f;
+    [SerializeField] private float _speedPlayer = 0.5f;
 
-    [SerializeField] private float jumpForce; 
+    [SerializeField] private float _jumpForce; 
     
-    [SerializeField] private float flyForce;    
+    [SerializeField] private float _flyForce;
+
+    [SerializeField] private GameObject _flameToFly;
 
     private Animator animatorPlayer;
 
@@ -23,7 +25,7 @@ public class MovementPlayer : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        animatorPlayer = GetComponent<Animator>();
+        animatorPlayer = GetComponent<Animator>();       
 
         isGround = false;
     }
@@ -43,7 +45,7 @@ public class MovementPlayer : MonoBehaviour
         moveVector.x = Input.GetAxis("Horizontal");
 
         // Первый способ передвижения
-        rb.velocity = new Vector2(moveVector.x * speedPlayer, rb.velocity.y);
+        rb.velocity = new Vector2(moveVector.x * _speedPlayer, rb.velocity.y);
 
         // Второй способ передвижения
         //rb.AddForce(moveVector * speedPlayer);
@@ -84,7 +86,7 @@ public class MovementPlayer : MonoBehaviour
         {
             animatorPlayer.SetBool("isJump", true);
 
-            rb.AddForce(Vector2.up * jumpForce);
+            rb.AddForce(Vector2.up * _jumpForce);
         }
         else
         {
@@ -98,16 +100,23 @@ public class MovementPlayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Полёт
+    /// </summary>
     private void Fly()
     {
         if (Input.GetKey(KeyCode.Space) && isFly)
         {
+            _flameToFly.SetActive(true);
+
             animatorPlayer.SetBool("isJump", true);
 
-            rb.AddForce(Vector2.up * flyForce, ForceMode2D.Force);
+            rb.AddForce(Vector2.up * _flyForce, ForceMode2D.Force);
         }
         else
         {
+            _flameToFly.SetActive(false);
+
             animatorPlayer.SetBool("isJump", false);
         }        
     }    
