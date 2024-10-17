@@ -18,12 +18,12 @@ public class ShooterPlayer : MonoBehaviour
     {
         float horizontalDirection = Input.GetAxis("Horizontal");
 
-        Shoot(horizontalDirection);
+        Shoot();
 
-        Invoke("StopFireFlash", 0.5f);
+        Invoke("StopFireFlash", 0.2f);
     }
 
-    public void Shoot(float direction)
+    public void Shoot()
     {
         if (Input.GetMouseButtonDown(0))
         {
