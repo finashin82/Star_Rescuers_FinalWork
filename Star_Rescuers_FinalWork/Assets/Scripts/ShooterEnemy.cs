@@ -17,35 +17,26 @@ public class ShooterEnemy : MonoBehaviour
     [SerializeField] private GameObject _fireFlash;
 
     // Время между стрельбой
-    [SerializeField] private float _timeShoot;
+    [SerializeField] private float _timeShoot;   
 
-    private Transform player;
-
-    private float timeShoot, direction;
+    private float timeShoot;
 
     private bool isFire;
 
-    // Start is called before the first frame update
+    private Transform player;
+   
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         timeShoot = _timeShoot;
+
         isFire = false;
     }
-
-    // Update is called once per frame
+   
     void Update()
     {
-        Vector2 direction = player.transform.localScale - transform.position;
-
-        direction.Normalize();
-
-        //transform.localScale = new Vector2(direction, 1);
-
-        transform.LookAt(player);
-
-        //transform.position = direction;
+        DirectionOfThePlayer();
 
         if (isFire)
         {
@@ -62,22 +53,22 @@ public class ShooterEnemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Выстрел
+    /// </summary>
     public void Shoot()
-    {
-        //if (Input.GetMouseButtonDown(0))
-        //{
-            StartFireFlash();
+    {        
+        StartFireFlash();
 
-            // Создаем объект, которым будем стрелять. Quaternion.identity - без вращения
-            GameObject currentBullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
+        // Создаем объект, которым будем стрелять. Quaternion.identity - без вращения
+        GameObject currentBullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
 
-            // Доступ к RigidBody2D объекта
-            Rigidbody2D currentBulletVelocity = currentBullet.GetComponent<Rigidbody2D>();
+        // Доступ к RigidBody2D объекта
+        Rigidbody2D currentBulletVelocity = currentBullet.GetComponent<Rigidbody2D>();
 
-            // Стрельба префабом в том направлении куда направлен объект
-            currentBulletVelocity.velocity = new Vector2(_fireSpeed * transform.localScale.x * direction, currentBulletVelocity.velocity.y);
-        //}
-    }
+        // Стрельба префабом в том направлении куда направлен объект
+        currentBulletVelocity.velocity = new Vector2(_fireSpeed * transform.localScale.x, currentBulletVelocity.velocity.y);       
+    }      
 
     /// <summary>
     /// Убрать вспышку выстрела
@@ -93,6 +84,24 @@ public class ShooterEnemy : MonoBehaviour
     private void StartFireFlash()
     {
         _fireFlash.SetActive(true);
+    }
+
+    /// <summary>
+    /// Поворот Enemy в сторону игрока
+    /// </summary>
+    private void DirectionOfThePlayer()
+    {
+        Vector3 playerPos = player.position;
+        Vector3 enemyPos = transform.position;
+
+        if (playerPos.x < enemyPos.x) // игрок находится слева от врага
+        {
+            transform.localScale = new Vector2(-1, 1); // поворачиваем врага влево
+        }
+        else // игрок находится справа от врага
+        {
+            transform.localScale = new Vector2(1, 1); // поворачиваем врага вправо
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -641,6 +641,7 @@ GameObject:
   - component: {fileID: 700499153}
   - component: {fileID: 700499152}
   - component: {fileID: 700499156}
+  - component: {fileID: 700499157}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -888,6 +889,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 24.376844, y: 13.119647}
   m_EdgeRadius: 0
+--- !u!114 &700499157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700499147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e2f99d6b9697e441b2ee1afc45c575f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &822094894
 GameObject:
   m_ObjectHideFlags: 0
@@ -9964,7 +9977,19 @@ MonoBehaviour:
   maxHealth: 100
   healthEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 700499157}
+        m_TargetAssemblyTypeName: DeathEnemy, Assembly-CSharp
+        m_MethodName: DeathPlayer
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1671777589}
+          m_ObjectArgumentAssemblyTypeName: Health, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!70 &1671777590
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
