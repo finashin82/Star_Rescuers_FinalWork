@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShooterEnemy : MonoBehaviour
+public class ShootingEnemyOld : MonoBehaviour
 {
+    //private Shooting shot;
+
     // Чем будет стрелять игрок
     [SerializeField] private GameObject _bulletPrefab;
 
@@ -19,21 +21,25 @@ public class ShooterEnemy : MonoBehaviour
     // Время между стрельбой
     [SerializeField] private float _timeShoot;   
 
+    // Время между стрельбой
     private float timeShoot;
 
+    // Разрешение на выстрел
     private bool isFire;
 
     private Transform player;
-   
-    void Start()
+
+    private void Awake()
     {
+        //shot = GetComponent<Shooting>();
+
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
         timeShoot = _timeShoot;
 
         isFire = false;
     }
-   
+       
     void Update()
     {
         DirectionOfThePlayer();
@@ -44,7 +50,9 @@ public class ShooterEnemy : MonoBehaviour
 
             if (timeShoot <= 0)
             {
-                Shoot();
+                StartFireFlash();
+
+                //shot.Shot(_bulletPrefab, _firePoint, _fireSpeed);
 
                 Invoke("StopFireFlash", 0.2f);
 
@@ -52,23 +60,6 @@ public class ShooterEnemy : MonoBehaviour
             }
         }
     }
-
-    /// <summary>
-    /// Выстрел
-    /// </summary>
-    public void Shoot()
-    {        
-        StartFireFlash();
-
-        // Создаем объект, которым будем стрелять. Quaternion.identity - без вращения
-        GameObject currentBullet = Instantiate(_bulletPrefab, _firePoint.position, Quaternion.identity);
-
-        // Доступ к RigidBody2D объекта
-        Rigidbody2D currentBulletVelocity = currentBullet.GetComponent<Rigidbody2D>();
-
-        // Стрельба префабом в том направлении куда направлен объект
-        currentBulletVelocity.velocity = new Vector2(_fireSpeed * transform.localScale.x, currentBulletVelocity.velocity.y);       
-    }      
 
     /// <summary>
     /// Убрать вспышку выстрела
@@ -104,6 +95,7 @@ public class ShooterEnemy : MonoBehaviour
         }
     }
 
+    // При входе в триггер начинается стрельба
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -112,6 +104,7 @@ public class ShooterEnemy : MonoBehaviour
         }
     }
 
+    // При выходе из триггера стрельба прекращается
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))

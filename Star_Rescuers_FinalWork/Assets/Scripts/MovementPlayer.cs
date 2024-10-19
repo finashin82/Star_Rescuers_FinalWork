@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class MovementPlayer : MonoBehaviour
 {
+    private JumpPlayer jumpPlayer;
+
     [SerializeField] private float _speedPlayer = 0.5f;
 
     [SerializeField] private float _jumpForce; 
@@ -24,7 +26,10 @@ public class MovementPlayer : MonoBehaviour
 
     private void Awake()
     {
+        jumpPlayer = GetComponent<JumpPlayer>();
+
         rb = GetComponent<Rigidbody2D>();
+
         animatorPlayer = GetComponent<Animator>();       
 
         isGround = false;
@@ -33,7 +38,24 @@ public class MovementPlayer : MonoBehaviour
     void Update()
     {
         Walk();
-        Jump();
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        {
+            animatorPlayer.SetBool("isJump", true);
+
+            jumpPlayer.Jump(rb, _jumpForce);
+        }
+        else
+        {
+            animatorPlayer.SetBool("isJump", false);
+        }
+
+        // Когда отпускаем пробел после прыжка, можно летать
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isFly = true;
+        }
+        
         Fly();        
     }
 
@@ -80,25 +102,25 @@ public class MovementPlayer : MonoBehaviour
     /// <summary>
     /// Прыжок
     /// </summary>
-    private void Jump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
-        {
-            animatorPlayer.SetBool("isJump", true);
+    //private void Jump()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space) && isGround)
+    //    {
+    //        animatorPlayer.SetBool("isJump", true);
 
-            rb.AddForce(Vector2.up * _jumpForce);
-        }
-        else
-        {
-            animatorPlayer.SetBool("isJump", false);
-        }
+    //        rb.AddForce(Vector2.up * _jumpForce);
+    //    }
+    //    else
+    //    {
+    //        animatorPlayer.SetBool("isJump", false);
+    //    }
 
-        // Когда отпускаем пробел после прыжка, можно летать
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            isFly = true;
-        }
-    }
+    //    // Когда отпускаем пробел после прыжка, можно летать
+    //    if (Input.GetKeyUp(KeyCode.Space))
+    //    {
+    //        isFly = true;
+    //    }
+    //}
 
     /// <summary>
     /// Полёт

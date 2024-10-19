@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class DeathEnemy : MonoBehaviour
+public class Death : MonoBehaviour
 {
     private Animator animatorGamer;
 
@@ -19,18 +19,14 @@ public class DeathEnemy : MonoBehaviour
         // Если текущая жизнь меньше или равна 0, то запуск анимации и скрытие объекта
         if (!health.IsAlive)
         {
-            //animatorGamer.SetBool("isDeath", true);
+            animatorGamer.SetBool("isDeath", true);            
 
-            Coroutine coroutin = StartCoroutine(timer());
+            Invoke("DestroyObject", 1f);
         }
     }
 
-    // Исчезновение объекта после смерти
-    private IEnumerator timer()
+    private void DestroyObject()
     {
-        // Вызывает действие через 2 секунды
-        yield return new WaitForSeconds(0.5f);
-
         gameObject.SetActive(false);
     }
 }

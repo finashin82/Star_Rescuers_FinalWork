@@ -31,7 +31,7 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage) 
     {
         currentHealth -= damage;
-
+       
         healthEvent?.Invoke(this);        
     }
 }
