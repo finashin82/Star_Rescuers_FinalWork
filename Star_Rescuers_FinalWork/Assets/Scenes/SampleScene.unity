@@ -10024,7 +10024,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 69a2db95515fdd446950c761bb9e5f7a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10139,7 +10139,6 @@ MonoBehaviour:
   _bulletPrefab: {fileID: 3460168662607682316, guid: d980489d62ed1814ea799b44717c02d8, type: 3}
   _fireSpeed: 60
   _firePoint: {fileID: 165204794}
-  _fireFlash: {fileID: 239463175}
   _fireFlash: {fileID: 239463175}
 --- !u!114 &1671777589
 MonoBehaviour:
