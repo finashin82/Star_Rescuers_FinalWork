@@ -10115,7 +10115,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671777580}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e792b67d1d5b864d8734ff76eeec22f, type: 3}
   m_Name: 
@@ -10131,7 +10131,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1671777580}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2171fa0000885eb4290a3baf70e87824, type: 3}
   m_Name: 
@@ -10269,13 +10269,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671777580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13d3e6cb06ba444ebd072b1d8c49b73, type: 3}
+  m_Script: {fileID: 11500000, guid: 700e9b2226a31ed47ba181373c0357a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletPrefab: {fileID: 3460168662607682316, guid: d980489d62ed1814ea799b44717c02d8, type: 3}
-  _fireSpeed: 60
-  _firePoint: {fileID: 165204794}
-  _fireFlash: {fileID: 239463175}
 --- !u!114 &1671777595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10285,9 +10281,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1671777580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 700e9b2226a31ed47ba181373c0357a8, type: 3}
+  m_Script: {fileID: 11500000, guid: 2998b0f003f62454885a5b6048bbf1af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedPlayer: 8
+  _jumpForce: 400
+  _flyForce: 2
+  _flameToFly: {fileID: 17715933}
 --- !u!1 &2020246988
 GameObject:
   m_ObjectHideFlags: 0
