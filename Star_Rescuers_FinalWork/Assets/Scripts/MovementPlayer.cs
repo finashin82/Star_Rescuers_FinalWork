@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class MovementPlayer : MonoBehaviour
 {
-    private JumpPlayer jumpPlayer;
+    private TimeToFly timeToFly;
 
     [SerializeField] private float _speedPlayer = 0.5f;
 
@@ -15,6 +15,12 @@ public class MovementPlayer : MonoBehaviour
     [SerializeField] private float _flyForce;
 
     [SerializeField] private GameObject _flameToFly;
+
+    [SerializeField] private float maxTimeToFly;
+
+    //private float currentTimeToFly;
+
+    //public float CurrentTimeToFly { get { return currentTimeToFly; } set { currentTimeToFly = value; } }
 
     private Animator animatorPlayer;
 
@@ -26,13 +32,15 @@ public class MovementPlayer : MonoBehaviour
 
     private void Awake()
     {
-        jumpPlayer = GetComponent<JumpPlayer>();
+        //jumpPlayer = GetComponent<JumpPlayer>();
 
         rb = GetComponent<Rigidbody2D>();
 
         animatorPlayer = GetComponent<Animator>();       
 
         isGround = false;
+
+        //currentTimeToFly = maxTimeToFly;
     }
        
     void Update()
@@ -42,8 +50,8 @@ public class MovementPlayer : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             animatorPlayer.SetBool("isJump", true);
-
-            jumpPlayer.Jump(rb, _jumpForce);
+            
+            Jump();
         }
         else
         {
@@ -102,25 +110,25 @@ public class MovementPlayer : MonoBehaviour
     /// <summary>
     /// Прыжок
     /// </summary>
-    //private void Jump()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space) && isGround)
-    //    {
-    //        animatorPlayer.SetBool("isJump", true);
+    private void Jump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
+        {
+            animatorPlayer.SetBool("isJump", true);
 
-    //        rb.AddForce(Vector2.up * _jumpForce);
-    //    }
-    //    else
-    //    {
-    //        animatorPlayer.SetBool("isJump", false);
-    //    }
+            rb.AddForce(Vector2.up * _jumpForce);
+        }
+        else
+        {
+            animatorPlayer.SetBool("isJump", false);
+        }
 
-    //    // Когда отпускаем пробел после прыжка, можно летать
-    //    if (Input.GetKeyUp(KeyCode.Space))
-    //    {
-    //        isFly = true;
-    //    }
-    //}
+        // Когда отпускаем пробел после прыжка, можно летать
+        if (Input.GetKeyUp(KeyCode.Space))
+        {
+            isFly = true;
+        }
+    }
 
     /// <summary>
     /// Полёт
@@ -128,12 +136,19 @@ public class MovementPlayer : MonoBehaviour
     private void Fly()
     {
         if (Input.GetKey(KeyCode.Space) && isFly)
-        {
-            _flameToFly.SetActive(true);
+        {      
+            if (timeToFly.CurrentTimeToFly > 0)
+            {
+                timeToFly.CurrentTimeToFly -= Time.deltaTime;
 
-            animatorPlayer.SetBool("isJump", true);
+                _flameToFly.SetActive(true);
 
-            rb.AddForce(Vector2.up * _flyForce, ForceMode2D.Force);
+                animatorPlayer.SetBool("isJump", true);
+
+                rb.AddForce(Vector2.up * _flyForce, ForceMode2D.Force);
+            }
+
+            Debug.Log($"Time To Fly: {timeToFly.CurrentTimeToFly}");
         }
         else
         {
