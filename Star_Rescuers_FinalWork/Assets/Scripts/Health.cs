@@ -34,4 +34,14 @@ public class Health : MonoBehaviour
        
         healthEvent?.Invoke(this);        
     }
+
+    public void AddHealth(float health)
+    {
+        currentHealth += health;
+
+        if (currentHealth > MaxHealth)
+        {
+            currentHealth = MaxHealth;
+        }
+    }
 }
