@@ -32,9 +32,15 @@ public class Health : MonoBehaviour
     {
         currentHealth -= damage;
        
-        healthEvent?.Invoke(this);        
+        healthEvent?.Invoke(this);
+
+        Debug.Log($"{currentHealth}");
     }
 
+    /// <summary>
+    /// Увеличение здоровья
+    /// </summary>
+    /// <param name="health"></param>
     public void AddHealth(float health)
     {
         currentHealth += health;

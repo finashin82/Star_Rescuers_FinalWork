@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FillHealth : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Image _healthCount;
 
-    // Update is called once per frame
-    void Update()
+    [SerializeField] private Text _countHealthText;
+
+    /// <summary>
+    /// Отображение уровня жизни в UI
+    /// </summary>
+    /// <param name="health"></param>
+    public void FillHealthCount(Health health) 
     {
-        
+        _healthCount.fillAmount = health.CurrentHealth / health.MaxHealth;
+
+        _countHealthText.text = health.CurrentHealth.ToString();
     }
 }

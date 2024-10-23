@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class FlyPlayer : MonoBehaviour
 {
@@ -9,6 +10,12 @@ public class FlyPlayer : MonoBehaviour
     [SerializeField] private float _flyForce;
 
     [SerializeField] private float maxTimeToFly;
+
+    [SerializeField] private UnityEvent<FlyPlayer> flyEvent;
+
+    public float MaxTimeToFly => maxTimeToFly;
+
+    public float CurrentTimeToFly => currentTimeToFly;
 
     private Rigidbody2D rb;
 
@@ -34,6 +41,8 @@ public class FlyPlayer : MonoBehaviour
             if (currentTimeToFly > 0)
             {
                 currentTimeToFly -= Time.deltaTime;
+
+                flyEvent?.Invoke(this);
 
                 _flameToFly.SetActive(true);
 
@@ -76,8 +85,6 @@ public class FlyPlayer : MonoBehaviour
         {
             currentTimeToFly = maxTimeToFly;
         }
-
-        Debug.Log($"Current Time To Fly: {currentTimeToFly}");
     }
 
     /// <summary>
@@ -86,8 +93,6 @@ public class FlyPlayer : MonoBehaviour
     public void AddMaxTimeToFly(float time)
     {
         maxTimeToFly += time;
-
-        Debug.Log($"Max Time To Fly: {maxTimeToFly}");
     }
 
     /// <summary>
