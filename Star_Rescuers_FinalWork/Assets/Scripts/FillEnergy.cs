@@ -9,10 +9,32 @@ public class FillEnergy : MonoBehaviour
 
     [SerializeField] private Text _countEnergyText;
 
-    public void FillEnergyCount(FlyPlayer flyPlayer)
+    private void OnEnable()
     {
-        _energyCount.fillAmount = flyPlayer.CurrentTimeToFly / flyPlayer.MaxTimeToFly;
+        EventController.onEnergy += FillEnergyCount;
 
-        _countEnergyText.text = flyPlayer.MaxTimeToFly.ToString();
+        //EventController.onCurrentEnergy += FillCurrentEnergy;
+
+        EventController.onMaxEnegry += FillMaxEnergy;
+
+    }
+
+    private void OnDisable()
+    {
+        EventController.onEnergy -= FillEnergyCount;
+
+        //EventController.onCurrentEnergy -= FillCurrentEnergy;
+
+        EventController.onMaxEnegry -= FillMaxEnergy;
+    }
+
+    public void FillEnergyCount(float currentTimeToFly, float maxTimeToFly)
+    {
+        _energyCount.fillAmount = currentTimeToFly / maxTimeToFly;        
+    }
+
+    public void FillMaxEnergy(float maxTimeToFly)
+    {
+        _countEnergyText.text = maxTimeToFly.ToString();
     }
 }

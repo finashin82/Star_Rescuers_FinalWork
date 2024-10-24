@@ -10502,7 +10502,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e800761a31d42547888e4b90522e91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addCurrentTime: 2
+  _addCurrentTime: 5
 --- !u!1 &1528148343
 GameObject:
   m_ObjectHideFlags: 0
@@ -11057,21 +11057,6 @@ MonoBehaviour:
   _flameToFly: {fileID: 17715933}
   _flyForce: 2
   maxTimeToFly: 2
-  flyEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1671777597}
-        m_TargetAssemblyTypeName: FillEnergy, Assembly-CSharp
-        m_MethodName: FillEnergyCount
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1671777596}
-          m_ObjectArgumentAssemblyTypeName: FlyPlayer, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1671777597
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -33,8 +33,6 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
        
         healthEvent?.Invoke(this);
-
-        Debug.Log($"{currentHealth}");
     }
 
     /// <summary>

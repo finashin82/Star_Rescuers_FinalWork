@@ -11,11 +11,11 @@ public class FlyPlayer : MonoBehaviour
 
     [SerializeField] private float maxTimeToFly;
 
-    [SerializeField] private UnityEvent<FlyPlayer> flyEvent;
+    //[SerializeField] private UnityEvent<FlyPlayer> flyEvent;
 
-    public float MaxTimeToFly => maxTimeToFly;
+    //public float MaxTimeToFly => maxTimeToFly;
 
-    public float CurrentTimeToFly => currentTimeToFly;
+    //public float CurrentTimeToFly => currentTimeToFly;
 
     private Rigidbody2D rb;
 
@@ -25,15 +25,24 @@ public class FlyPlayer : MonoBehaviour
 
     private bool isFly;
 
+   
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
         animatorPlayer = GetComponent<Animator>();
 
-        currentTimeToFly = maxTimeToFly;
+        currentTimeToFly = maxTimeToFly;       
     }
-   
+
+    private void Start()
+    {
+        EventController.onMaxEnegry?.Invoke(maxTimeToFly);
+
+        EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.Space) && isFly)
@@ -42,7 +51,7 @@ public class FlyPlayer : MonoBehaviour
             {
                 currentTimeToFly -= Time.deltaTime;
 
-                flyEvent?.Invoke(this);
+                EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
 
                 _flameToFly.SetActive(true);
 
@@ -63,6 +72,8 @@ public class FlyPlayer : MonoBehaviour
         {
             isFly = true;
         }
+
+        //EventController.onMaxEnegry?.Invoke(maxTimeToFly);
     }
 
     /// <summary>
@@ -85,6 +96,8 @@ public class FlyPlayer : MonoBehaviour
         {
             currentTimeToFly = maxTimeToFly;
         }
+
+        EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
     }
 
     /// <summary>
@@ -93,6 +106,8 @@ public class FlyPlayer : MonoBehaviour
     public void AddMaxTimeToFly(float time)
     {
         maxTimeToFly += time;
+
+        EventController.onMaxEnegry?.Invoke(maxTimeToFly);
     }
 
     /// <summary>

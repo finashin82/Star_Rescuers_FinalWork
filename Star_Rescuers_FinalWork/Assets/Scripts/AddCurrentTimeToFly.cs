@@ -10,7 +10,7 @@ public class AddCurrentTimeToFly : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<FlyPlayer>(out var timeToFly))
         {
-            // У объекта с которым столкнулись пули, вызывается скрипт "Health" и метод "TakeDamage" с параметром damage (Уменьшает здоровье)
+            // У объекта, который взял энергию, вызывается скрипт добавления энергии 
             timeToFly.AddCurrentTimeToFly(_addCurrentTime);
 
             gameObject.SetActive(false);
