@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public class HealthEnemy : MonoBehaviour
 {
     // Максимальная жизнь
     [SerializeField] private float _maxHealth;
@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
     // Текущая жизнь
     private float currentHealth;
 
-    [SerializeField] private UnityEvent<Health> healthEvent;
+    [SerializeField] private UnityEvent<HealthEnemy> healthEvent;
        
     public float MaxHealth => _maxHealth;
     public float CurrentHealth => currentHealth;
@@ -33,21 +33,5 @@ public class Health : MonoBehaviour
         currentHealth -= damage;
 
         healthEvent?.Invoke(this);
-    }
-
-    /// <summary>
-    /// Увеличение здоровья
-    /// </summary>
-    /// <param name="health"></param>
-    public void AddHealth(float health)
-    {
-        currentHealth += health;
-
-        if (currentHealth > MaxHealth)
-        {
-            currentHealth = MaxHealth;
-        }
-
-        healthEvent?.Invoke(this);
-    }
+    }   
 }

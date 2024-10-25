@@ -7,7 +7,7 @@ public class FillHealth : MonoBehaviour
 {
     [SerializeField] private Image _healthCount;
 
-    [SerializeField] private Text _countHealthText;
+    [SerializeField] private Text _countHealthText;    
 
     /// <summary>
     /// Отображение уровня жизни в UI
@@ -18,5 +18,5 @@ public class FillHealth : MonoBehaviour
         _healthCount.fillAmount = health.CurrentHealth / health.MaxHealth;
 
         _countHealthText.text = health.CurrentHealth.ToString();
-    }
+    }   
 }

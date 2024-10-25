@@ -9,13 +9,7 @@ public class FlyPlayer : MonoBehaviour
 
     [SerializeField] private float _flyForce;
 
-    [SerializeField] private float maxTimeToFly;
-
-    //[SerializeField] private UnityEvent<FlyPlayer> flyEvent;
-
-    //public float MaxTimeToFly => maxTimeToFly;
-
-    //public float CurrentTimeToFly => currentTimeToFly;
+    [SerializeField] private float maxTimeToFly;    
 
     private Rigidbody2D rb;
 
@@ -71,9 +65,7 @@ public class FlyPlayer : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isFly = true;
-        }
-
-        //EventController.onMaxEnegry?.Invoke(maxTimeToFly);
+        }        
     }
 
     /// <summary>

@@ -11,9 +11,7 @@ public class FillEnergy : MonoBehaviour
 
     private void OnEnable()
     {
-        EventController.onEnergy += FillEnergyCount;
-
-        //EventController.onCurrentEnergy += FillCurrentEnergy;
+        EventController.onEnergy += FillEnergyCount;        
 
         EventController.onMaxEnegry += FillMaxEnergy;
 
@@ -21,9 +19,7 @@ public class FillEnergy : MonoBehaviour
 
     private void OnDisable()
     {
-        EventController.onEnergy -= FillEnergyCount;
-
-        //EventController.onCurrentEnergy -= FillCurrentEnergy;
+        EventController.onEnergy -= FillEnergyCount;       
 
         EventController.onMaxEnegry -= FillMaxEnergy;
     }

@@ -10,7 +10,7 @@ public class AddMaxTimeToFly : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent<FlyPlayer>(out var timeToFly))
         {
-            // У объекта с которым столкнулись пули, вызывается скрипт "Health" и метод "TakeDamage" с параметром damage (Уменьшает здоровье)
+            // Если у объект, с которым столкнулись, умеет летать, то добавляем время полета
             timeToFly.AddMaxTimeToFly(_addMaxTime);
 
             gameObject.SetActive(false);
