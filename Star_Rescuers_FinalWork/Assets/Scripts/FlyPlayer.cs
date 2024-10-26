@@ -32,8 +32,6 @@ public class FlyPlayer : MonoBehaviour
 
     private void Start()
     {
-        EventController.onMaxEnegry?.Invoke(maxTimeToFly);
-
         EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
     }
 
@@ -99,7 +97,9 @@ public class FlyPlayer : MonoBehaviour
     {
         maxTimeToFly += time;
 
-        EventController.onMaxEnegry?.Invoke(maxTimeToFly);
+        //EventController.onMaxEnegry?.Invoke(maxTimeToFly);
+
+        EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
     }
 
     /// <summary>

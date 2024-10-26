@@ -11,26 +11,18 @@ public class FillEnergy : MonoBehaviour
 
     private void OnEnable()
     {
-        EventController.onEnergy += FillEnergyCount;        
-
-        EventController.onMaxEnegry += FillMaxEnergy;
-
+        EventController.onEnergy += FillEnergyCount;
     }
 
     private void OnDisable()
     {
-        EventController.onEnergy -= FillEnergyCount;       
-
-        EventController.onMaxEnegry -= FillMaxEnergy;
+        EventController.onEnergy -= FillEnergyCount;
     }
 
     public void FillEnergyCount(float currentTimeToFly, float maxTimeToFly)
     {
-        _energyCount.fillAmount = currentTimeToFly / maxTimeToFly;        
-    }
+        _energyCount.fillAmount = currentTimeToFly / maxTimeToFly;
 
-    public void FillMaxEnergy(float maxTimeToFly)
-    {
         _countEnergyText.text = maxTimeToFly.ToString();
     }
 }

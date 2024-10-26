@@ -9,7 +9,9 @@ public class Death : MonoBehaviour
 
     private GameObject gb;
 
-    //private Collider2D collider;
+    private Shooting shooting;
+
+    private BoxCollider2D collider2d;
 
     private void Awake()
     {
@@ -17,9 +19,11 @@ public class Death : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        //collider = GetComponent<Collider2D>();
+        collider2d = GetComponent<BoxCollider2D>();
 
         gb = GetComponent<GameObject>();
+
+        shooting = GetComponent<Shooting>();
     }
 
     /// <summary>
@@ -31,15 +35,11 @@ public class Death : MonoBehaviour
         // Если текущая жизнь меньше или равна 0, то запуск анимации и скрытие объекта
         if (!health.IsAlive)
         {
-            rb.isKinematic = true;
+            shooting.enabled = false;
 
-            //gb.GetComponent<Collider2D>().enabled = false;
+            rb.isKinematic = true;            
 
-            //collider.enabled = false;       
-            
-            //CompositeCollider2D.Destroy(collider);
-
-            //collider.GetComponent<Collider>().enabled = false;
+            collider2d.enabled = false;
 
             animatorGamer.SetBool("isDeath", true);            
 
