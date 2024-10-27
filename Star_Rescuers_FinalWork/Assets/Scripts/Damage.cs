@@ -13,13 +13,7 @@ public class Damage : MonoBehaviour
         if (collision.gameObject.TryGetComponent<Health>(out var health))
         {
             // У объекта с которым столкнулись пули, вызывается скрипт "Health" и метод "TakeDamage" с параметром damage (Уменьшает здоровье)
-            health.TakeDamage(_damage);
-        }
-
-        // Уничтожение пули при столкновении с триггером врага, игрока или земли
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Ground") || collision.CompareTag("Player"))
-        {
-            Destroy(gameObject);
+            health.TakeDamage(_damage);           
         }
     }
 
