@@ -34,7 +34,7 @@ public class Death : MonoBehaviour
     {
         // Если текущая жизнь меньше или равна 0, то запуск анимации и скрытие объекта
         if (!health.IsAlive)
-        {
+        { 
             shooting.enabled = false;
 
             rb.isKinematic = true;            

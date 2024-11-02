@@ -4,11 +4,19 @@ public class ShootingPlayer : Shooting
 {
     [SerializeField] private float maxAmmo;
 
+    [SerializeField] private float timeRecharge;
+
+    private SoundInTheGame soundInTheGame;
+
     private float currentAmmo;
+
+    private bool isShot;
 
     private void Start()
     {
         currentAmmo = maxAmmo;
+
+        soundInTheGame = GetComponent<SoundInTheGame>();
 
         EventController.onAmmo?.Invoke(currentAmmo);
     }
@@ -23,13 +31,17 @@ public class ShootingPlayer : Shooting
 
                 Shot();
 
+                soundInTheGame.SoundToShootingPlayer();
+
                 currentAmmo -= 1;
 
                 EventController.onAmmo?.Invoke(currentAmmo);
             }
             else
             {
-                Invoke("RechargeAmmo", 1f);
+                soundInTheGame.SoundEmptyAmmo();
+
+                Invoke("RechargeAmmo", timeRecharge);                
             }            
         }
 

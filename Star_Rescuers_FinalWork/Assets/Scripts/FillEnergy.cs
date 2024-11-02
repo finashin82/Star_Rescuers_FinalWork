@@ -20,7 +20,7 @@ public class FillEnergy : MonoBehaviour
     }
 
     public void FillEnergyCount(float currentTimeToFly, float maxTimeToFly)
-    {
+    {      
         _energyCount.fillAmount = currentTimeToFly / maxTimeToFly;
 
         _countEnergyText.text = maxTimeToFly.ToString();

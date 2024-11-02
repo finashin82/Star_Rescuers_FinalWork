@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class FlyPlayer : MonoBehaviour
 {
+    private SoundInTheGame soundInTheGame;
+
     [SerializeField] private GameObject _flameToFly;
 
     [SerializeField] private float _flyForce;
@@ -19,15 +21,17 @@ public class FlyPlayer : MonoBehaviour
 
     private bool isFly;
 
-   
-
+    private bool isPlaySound = true;
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
 
         animatorPlayer = GetComponent<Animator>();
 
-        currentTimeToFly = maxTimeToFly;       
+        currentTimeToFly = maxTimeToFly;    
+        
+        soundInTheGame = GetComponent<SoundInTheGame>();
     }
 
     private void Start()
@@ -50,6 +54,13 @@ public class FlyPlayer : MonoBehaviour
                 animatorPlayer.SetBool("isJump", true);
 
                 Fly();
+
+                if (isPlaySound)
+                {
+                    soundInTheGame.FlameToFlySoundPlay();
+
+                    isPlaySound = false;
+                }
             }
         }
         else
@@ -57,12 +68,16 @@ public class FlyPlayer : MonoBehaviour
             _flameToFly.SetActive(false);
 
             animatorPlayer.SetBool("isJump", false);
+
+            soundInTheGame.FlameToFlySoundStop();           
         }
 
         // Когда отпускаем пробел после прыжка, можно летать
         if (Input.GetKeyUp(KeyCode.Space))
         {
             isFly = true;
+
+            isPlaySound = true;
         }        
     }
 
@@ -87,6 +102,8 @@ public class FlyPlayer : MonoBehaviour
             currentTimeToFly = maxTimeToFly;
         }
 
+        soundInTheGame.SoundTakeBonus();
+
         EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
     }
 
@@ -97,7 +114,7 @@ public class FlyPlayer : MonoBehaviour
     {
         maxTimeToFly += time;
 
-        //EventController.onMaxEnegry?.Invoke(maxTimeToFly);
+        soundInTheGame.SoundTakeBonus();
 
         EventController.onEnergy?.Invoke(currentTimeToFly, maxTimeToFly);
     }

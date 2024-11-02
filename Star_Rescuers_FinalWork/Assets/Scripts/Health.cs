@@ -30,9 +30,12 @@ public class Health : MonoBehaviour
     /// <param name="damage"></param>
     public void TakeDamage(float damage) 
     {
-        currentHealth -= damage;
+        if (currentHealth > 0)
+        {
+            currentHealth -= damage;
 
-        healthEvent?.Invoke(this);
+            healthEvent?.Invoke(this);
+        }        
     }
 
     /// <summary>
