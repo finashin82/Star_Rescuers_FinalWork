@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class JumpPlayer : MonoBehaviour
 {
+    private SoundInTheGame soundInTheGame;
+
     [SerializeField] private float _jumpForce;
 
     private Animator animatorPlayer;
@@ -18,6 +20,8 @@ public class JumpPlayer : MonoBehaviour
 
         animatorPlayer = GetComponent<Animator>();
 
+        soundInTheGame = GetComponent<SoundInTheGame>();
+
         isGround = false;
     }
 
@@ -25,6 +29,8 @@ public class JumpPlayer : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
+            soundInTheGame.SoundJumpPlayer();
+
             animatorPlayer.SetBool("isJump", true);
 
             Jump();

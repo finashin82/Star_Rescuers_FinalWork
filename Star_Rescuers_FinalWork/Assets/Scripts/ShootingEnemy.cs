@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShootingEnemy : Shooting
 {
+    [SerializeField] private AudioSource _soundShooting;
+
     // Время между стрельбой
     [SerializeField] private float _timeShoot;   
 
@@ -18,7 +20,7 @@ public class ShootingEnemy : Shooting
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-
+                
         timeShoot = _timeShoot;
 
         isFire = false;
@@ -33,8 +35,10 @@ public class ShootingEnemy : Shooting
             timeShoot -= Time.deltaTime;
 
             if (timeShoot <= 0)
-            {
+            {               
                 StartFireFlash();
+
+                _soundShooting.Play();
 
                 Shot();
                
@@ -50,8 +54,8 @@ public class ShootingEnemy : Shooting
     /// </summary>
     private void DirectionOfThePlayer()
     {
-        Vector3 playerPos = player.position;
-        Vector3 enemyPos = transform.position;
+        Vector2 playerPos = player.position;
+        Vector2 enemyPos = transform.position;
 
         if (playerPos.x < enemyPos.x) // игрок находится слева от врага
         {

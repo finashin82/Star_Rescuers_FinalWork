@@ -45,6 +45,13 @@ public class ShootingPlayer : Shooting
             }            
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            soundInTheGame.SoundEmptyAmmo();
+
+            RechargeAmmo();
+        }
+
         if (Input.GetMouseButtonUp(0))
         {
             StopFireFlash();

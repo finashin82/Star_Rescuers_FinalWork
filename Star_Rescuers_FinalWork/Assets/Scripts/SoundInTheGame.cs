@@ -14,6 +14,8 @@ public class SoundInTheGame : MonoBehaviour
 
     [SerializeField] private AudioSource _soundEmptyAmmo;
 
+    [SerializeField] private AudioSource _soundJumpPlayer;
+
     public void FlameToFlySoundPlay()
     {
         _soundToFly.Play();
@@ -42,5 +44,10 @@ public class SoundInTheGame : MonoBehaviour
     public void SoundEmptyAmmo() 
     { 
         _soundEmptyAmmo.Play(); 
+    }
+    
+    public void SoundJumpPlayer() 
+    { 
+        _soundJumpPlayer.Play(); 
     }
 }
