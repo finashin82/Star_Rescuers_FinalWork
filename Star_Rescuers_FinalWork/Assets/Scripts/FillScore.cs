@@ -19,7 +19,12 @@ public class FillScore : MonoBehaviour
 
         _fillScore.text = scorePlayer.ToString();
     }
-   
+
+    private void Start()
+    {
+        EventController.onScore?.Invoke(scorePlayer);
+    }
+
     public void FillScorePlayer(Health health)
     {
         if (!health.IsAlive)
@@ -29,6 +34,8 @@ public class FillScore : MonoBehaviour
             scorePlayer += _countForEnemy;
 
             _fillScore.text = scorePlayer.ToString();
+
+            EventController.onScore?.Invoke(scorePlayer);
         }        
     }
 }

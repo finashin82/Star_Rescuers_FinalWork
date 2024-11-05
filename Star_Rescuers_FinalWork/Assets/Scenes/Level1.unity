@@ -518,6 +518,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 1081106204}
+  _scoreCount: {fileID: 1174619926}
 --- !u!1001 &189403423
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4334,6 +4335,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _winLevelPanel: {fileID: 1049701657}
+  _scoreCountWin: {fileID: 792709261}
 --- !u!4 &1046261335
 Transform:
   m_ObjectHideFlags: 0
