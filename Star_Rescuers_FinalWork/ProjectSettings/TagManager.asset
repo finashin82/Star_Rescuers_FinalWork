@@ -9,6 +9,8 @@ TagManager:
   - AddCurrentTime
   - AddMaxTime
   - AddHealth
+  - Music
+  - Sound
   layers:
   - Default
   - TransparentFX
