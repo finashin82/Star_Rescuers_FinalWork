@@ -23,7 +23,9 @@ public class WinLevel : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
+        {
             _winLevelPanel.SetActive(true);
+        }
     }
 
     public void ScoreCountGameWin(int score)

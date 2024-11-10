@@ -27,6 +27,9 @@ public class JumpPlayer : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             soundInTheGame.SoundJumpPlayer();

@@ -41,6 +41,9 @@ public class FlyPlayer : MonoBehaviour
 
     void Update()
     {
+        if (Time.timeScale == 0)
+            return;
+
         if (Input.GetKey(KeyCode.Space) && isFly)
         {
             if (currentTimeToFly > 0)

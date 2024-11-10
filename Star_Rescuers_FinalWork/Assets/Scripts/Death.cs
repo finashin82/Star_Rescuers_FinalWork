@@ -35,10 +35,13 @@ public class Death : MonoBehaviour
         // Если текущая жизнь меньше или равна 0, то запуск анимации и скрытие объекта
         if (!health.IsAlive)
         { 
+            // Выключаем скрипт стрельбы
             shooting.enabled = false;
 
+            // Перевод RigidBody2D в режим кинематики
             rb.isKinematic = true;            
 
+            // Отключаем коллайдер
             collider2d.enabled = false;
 
             animatorGamer.SetBool("isDeath", true);            

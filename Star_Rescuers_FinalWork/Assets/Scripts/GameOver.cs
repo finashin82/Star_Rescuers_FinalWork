@@ -7,6 +7,8 @@ public class GameOver : MonoBehaviour
 
     [SerializeField] private Text _scoreCount;
 
+    [SerializeField] private GameObject _player;
+
     private void OnEnable()
     {
         EventController.onScore += ScoreCountGameOver;
@@ -20,7 +22,9 @@ public class GameOver : MonoBehaviour
     public void GameOverPanel(Health health)
     {
         if (!health.IsAlive)
-            _gameOverPanel.SetActive(true);
+        {
+            _gameOverPanel.SetActive(true);            
+        }           
     }
 
     public void ScoreCountGameOver(int score) 

@@ -11,19 +11,17 @@ public class SoundHandlerInLevel : MonoBehaviour
 
     private int countObjects, currentCountObject = 0;
 
-
-
-    // Start is called before the first frame update
     void Start()
     {
+        // Собираем все объекты с тэгом Sound
         gameObjects = GameObject.FindGameObjectsWithTag("Sound");
 
         countObjects = gameObjects.Length;
     }
 
-    // Update is called once per frame
     void Update()
     {
+        // Всем объектам в массиве присваиваем нужную громкость
         if (currentCountObject < countObjects)
         {
             audioSource = gameObjects[currentCountObject].GetComponent<AudioSource>();
