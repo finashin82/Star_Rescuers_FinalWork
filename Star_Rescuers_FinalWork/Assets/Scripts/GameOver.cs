@@ -23,12 +23,26 @@ public class GameOver : MonoBehaviour
     {
         if (!health.IsAlive)
         {
-            _gameOverPanel.SetActive(true);            
-        }           
+            Invoke("GameOverPanel", 2f);
+        }
     }
+
+    //public void GameOverPanel()
+    //{
+    //    if (!_player.activeInHierarchy)
+    //    {
+    //        _gameOverPanel.SetActive(true);
+    //        Debug.Log("+");
+    //    }           
+    //}
 
     public void ScoreCountGameOver(int score) 
     {
         _scoreCount.text = "Score: " + score.ToString();
+    }
+
+    private void GameOverPanel() 
+    {
+        _gameOverPanel.SetActive(true);
     }
 }

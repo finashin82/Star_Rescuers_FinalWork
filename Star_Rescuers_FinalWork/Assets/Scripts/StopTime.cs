@@ -10,6 +10,10 @@ public class StopTime : MonoBehaviour
 
     [SerializeField] private GameObject _gameOverPanel;
 
+    [SerializeField] private GameObject _player;
+
+
+
     private void Update()
     {
         if (_pausePanel.activeInHierarchy || _winPanel.activeInHierarchy || _gameOverPanel.activeInHierarchy)
